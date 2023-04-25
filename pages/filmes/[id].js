@@ -3,13 +3,9 @@ import apifilmes from '@/services/apiFilmes'
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 
-const Detalhes = ({filme, atores}) => {
-    return (
-        <Pagina titulo={filme.title}>
-          <Row>
-            <Col md={3}>
-            <Card.Img variant="top" src= {"https://image.tmdb.org/t/p/w500" + filme.poster_path} />
-            </Col>
+const index = (props) => {
+
+  return (
 
             <Col md={9}>
               <p><strong>Orçamento: </strong>{filme.budget}</p>
@@ -37,11 +33,9 @@ const Detalhes = ({filme, atores}) => {
         </Col>
           ))}
       </Row>
-        
-      
-          
 
-        <div>Detalhes</div>
+
+
         </Pagina>  
     )
 }
