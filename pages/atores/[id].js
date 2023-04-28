@@ -3,6 +3,7 @@ import Pagina from '@/components/Pagina'
 import { Card, Col, Row } from 'react-bootstrap'
 import Link from 'next/link'
 import apifilmes from '@/services/apiFilmes'
+import Galeria from '@/components/Galeria'
 
 const Detalhes = ({ ator, imagens, filpopular, seriespopular}) => {
     return (
@@ -20,6 +21,10 @@ const Detalhes = ({ ator, imagens, filpopular, seriespopular}) => {
                     <p>{ator.biography}</p>
                 </Col>
             </Row>
+           
+            <Galeria  titulo='Imagens' lista={imagens} foto='file_path' size={1}/>
+            <Galeria  titulo='Filmes em que atuou' lista={filpopular} foto='poster_path' />
+
             <h2>Imagens</h2>
             <Row>
                 {imagens.map(item => (
