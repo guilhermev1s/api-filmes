@@ -40,7 +40,7 @@ const index = (props) => {
 export default index
 
 export async function getServerSideProps(context) {
-  const resultado = await apifilmes.get("/movie/popular")
+  const resultado = await apifilmes.get("/movie/popular?language=pt-BR")
   const filmes = resultado.data.results
 
   return {

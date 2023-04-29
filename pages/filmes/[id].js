@@ -1,5 +1,6 @@
 import Pagina from '@/components/Pagina'
 import apifilmes from '@/services/apiFilmes'
+import Link from 'next/link'
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 
@@ -33,7 +34,9 @@ const Detalhes = ({filme, atores}) => {
       <Row>
         {atores.map(item=> (
         <Col className='mb-3' md={2}>
-          <Card.Img variant="top" src= {"https://image.tmdb.org/t/p/w500" + item.profile_path} />
+          <Link href={'/atores/' + item.id}>
+            <Card.Img variant="top" src= {"https://image.tmdb.org/t/p/w500" + item.profile_path} />
+          </Link>
         </Col>
           ))}
       </Row>
@@ -52,10 +55,10 @@ export async function getServerSideProps(context) {
 
     const id = context.params.id
 
-    const resultado = await apifilmes.get('/movie/' + id)
+    const resultado = await apifilmes.get('/movie/' + id + '?language=pt-BR')
     const filme = resultado.data
 
-    const resAtores = await apifilmes.get('/movie/' + id + '/credits')
+    const resAtores = await apifilmes.get('/movie/' + id + '/credits?language=pt-BR')
     const atores = resAtores.data.cast
 
     return {
